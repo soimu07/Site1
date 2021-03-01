@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import Input from '../input';
 import Button from '../button';
 import { registerUserAction } from '../../actions/actions';
+import Preloader from '../preloader'
 
 
 const RegisterForm = ({history}) =>{
@@ -13,6 +14,7 @@ const [isEmailValid, setIsEmailValid] = useState(false);
 const [passwordsMatch, setPasswordsMatch] = useState(false);
 const [passwordLength, setPasswordLength] = useState(false);
 const [passwordRepeatLength, setPasswordRepeatLength] = useState(false);
+const [isLoading, setIsLoading] = useState(false);
 
 const dispatch = useDispatch();
 
@@ -31,6 +33,7 @@ const validateForm= () => {
     setPasswordsMatch(passwordMatchValidation);
 
     if (emailValidation && passwordMatchValidation) {
+        setIsLoading(true);
         registerUserAction(email, password, passwordVerify, dispatch, history)
     }
 
@@ -41,11 +44,17 @@ const validateForm= () => {
 
     return(
         <div>
-             <h2>Join us now!</h2>
-             <Input key='email' placeholdertext='E-mail' onInputChange={(event)=>{setEmail(event.target.value)}}></Input>
-             <Input key='password' placeholdertext='Password' onInputChange={(event)=>{setPassword(event.target.value)}}></Input>
-             <Input key='passwordRepeat' placeholdertext='Repeat Password' onInputChange={(event)=>{setPasswordVerify(event.target.value)}}></Input>
-             <Button onButtonClick={()=>validateForm()} text='Create Account'></Button>
+            {!isLoading && (
+                <div>
+                    <h2>Join us now!</h2>
+                    <Input key='email' placeholdertext='E-mail' onInputChange={(event)=>{setEmail(event.target.value)}}/>
+                     <Input key='password' placeholdertext='Password' onInputChange={(event)=>{setPassword(event.target.value)}}/>
+                    <Input key='passwordRepeat' placeholdertext='Repeat Password' onInputChange={(event)=>{setPasswordVerify(event.target.value)}}/>
+                    <Button onButtonClick={()=>validateForm()} text='Create Account'/>
+                </div>)}
+            { isLoading && (
+                <Preloader/>
+            )}      
         </div>
     )
 }

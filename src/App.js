@@ -7,6 +7,7 @@ import {
 import Register from './pages/register'
 import Login from './pages/login'
 import Products from './pages/products'
+import Error from './pages/error'
 
 const App = () => (
   <Router>
@@ -16,6 +17,9 @@ const App = () => (
        </Route>        
        <Route path="/products">
          <Products/>
+       </Route>
+       <Route path='/error'>
+         <Error/>
        </Route>
        <Route path="/">
         <Register/>
