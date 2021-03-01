@@ -4,23 +4,24 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+import Register from './pages/register'
+import Login from './pages/login'
+import Products from './pages/products'
 
-const App = () => {
-  return (
-    <Router>
-      <Switch>
-        <Route path="/login">
-          <p>Login</p>
-        </Route>
-        <Route path="/products">
-          <p>Products</p>
-        </Route>
-        <Route path="/">
-          <p>Register</p>
-        </Route>
-      </Switch>
-    </Router>
-  );
-}
+const App = () => (
+  <Router>
+    <Switch>
+      <Route path="/login">
+         <Login/>   
+       </Route>        
+       <Route path="/products">
+         <Products/>
+       </Route>
+       <Route path="/">
+        <Register/>
+      </Route>
+    </Switch>
+  </Router>
+);
 
 export default App;
