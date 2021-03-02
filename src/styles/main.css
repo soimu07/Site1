@@ -1,0 +1,12 @@
+body {
+  font-family: Geomanist400, "Times New Roman", Times, serif;
+}
+
+@font-face {
+  font-family: Boomshell;
+  src: url("../assets/fonts/Boomshell\ Font.ttf");
+}
+@font-face {
+  font-family: Geomanist400;
+  src: url("../assets/fonts/geomanist-regular-webfont.ttf");
+}

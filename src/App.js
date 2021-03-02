@@ -8,6 +8,7 @@ import Register from './pages/register'
 import Login from './pages/login'
 import Products from './pages/products'
 import Error from './pages/error'
+import './styles/main.css';
 
 const App = () => (
   <Router>

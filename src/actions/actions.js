@@ -77,3 +77,36 @@ export const loginUserAction = async (email, password, dispatch, history) => {
       return response.json(); // parses JSON 
     
 }
+
+export const getProductsAction = async (accessToken, dispatch, history) => {
+    const {status, data} = await getProducts(accessToken);
+    switch (status) {
+        case 200:
+            dispatch({
+                type:'GET_PRODUCTS_SUCCESS',
+                payload:{products:data.rows}
+            })
+            break;
+        default: 
+                history.push('/error')
+
+            break;
+    }
+}
+
+const getProducts = async(accessToken) => {
+    const url = 'https://zipper-test-backend.herokuapp.com/products?limit=50&offset=0'
+    const response = await fetch(url, {
+        headers: new Headers({
+            'Authorization': `Bearer ${accessToken}`, 
+            'Content-Type': 'application/json'
+        }), 
+    })
+    return response.json()
+
+}
+export const logOutUserAction = () => {
+    return ({
+        type:'LOG_OUT_USER'
+    })
+}

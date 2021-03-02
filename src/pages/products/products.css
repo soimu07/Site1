@@ -1,0 +1,94 @@
+.productsPage {
+  margin: 0 auto;
+  width: 1440px;
+  display: flex;
+  flex-direction: column;
+}
+.productsHeaderContainer {
+  height: 90px;
+  margin: 0;
+  background-color: #fff;
+  z-index: 2;
+}
+.productsHeader {
+  width: 946px;
+  height: 100%;
+  margin: 0 auto;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+.headerTitle {
+  font-family: Boomshell;
+  font-weight: 400;
+  font-size: 30px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.buttonContainer {
+  width: 135px;
+  height: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
+.productsContainer {
+  margin: 0 auto;
+  width: 946px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
+.productContainer {
+  margin: 0;
+  padding: 10px 0;
+  width: 295px;
+  border-radius: 20px;
+  filter: drop-shadow(0px 4px 88px rgba(135, 135, 135, 0.25));
+}
+.productImage {
+  width: 100%;
+  display: block;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.productTitle {
+  background-color: #fff;
+  margin: 0;
+  padding: 19px 24px 2px;
+  font-family: Geomanist400;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 131.8%;
+}
+.productDescription {
+  background-color: #fff;
+  margin: 0;
+  padding: 0 24px;
+  padding-bottom: 16px;
+  font-family: Geomanist400;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 152.8%;
+}
+.productPrice {
+  background-color: #000;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  height: 57px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Geomanist400;
+  font-weight: bolder;
+  font-size: 24px;
+  line-height: 152.8%;
+}
