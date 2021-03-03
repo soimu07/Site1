@@ -1,0 +1,15 @@
+.registerContainer {
+  margin: 0;
+  background-size: cover;
+  background-image: url(../../assets/background-images/background.png);
+  width: 100%;
+  height: 100vh;
+}
+.registerWrapper {
+  width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}

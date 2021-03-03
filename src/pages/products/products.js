@@ -24,10 +24,11 @@ const Products = ({history}) => {
             <header className='productsHeaderContainer'>
                 <div className='productsHeader'>
                     <div className='headerTitle'>Never look back</div>
-                    <div className='buttonContainer'><Button onButtonClick={()=>logOut()}text='Log out'></Button></div>
+                    <div className='logOutButtonContainer'><Button onButtonClick={()=>logOut()}text='Log out'></Button></div>
                 </div>
             </header>
-        <div className='productsContainer'>
+            <div className='spinner'></div>
+            <div className='productsContainer'>
             {(!products.length) && 'Loading'}        
             {products.map(product => (
                 <div key={product.id} className='productContainer'>
@@ -36,8 +37,12 @@ const Products = ({history}) => {
                    <p className='productDescription'>{product.description}</p>
                    <div className='productPrice'>${Math.floor(Math.random()*100)}</div>
                 </div>
-            ))}            
-        </div>
+            ))}  
+                 
+            </div>
+            <div className='loadMoreButtonContainer'>
+            <Button text="Load more"></Button>
+            </div>    
         </div>
     )
 }

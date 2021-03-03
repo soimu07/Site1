@@ -1,0 +1,60 @@
+.registerFormContainer {
+  position: relative;
+}
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 365px;
+  height: 567px;
+  background-color: #fff;
+  border-radius: 32px;
+  box-shadow: 0px 4px 88px rgba(135, 135, 135, 0.25);
+}
+.registerFormTitle {
+  margin: 0;
+  font-size: 32px;
+  padding: 54px 0 55px;
+  font-weight: normal;
+}
+.termsContainer {
+  display: flex;
+  align-items: center;
+  width: 301px;
+  height: 40px;
+  margin: 0 0 50px;
+}
+.termsCheckbox {
+  margin: 0 10px 0 0;
+  background: #fafafa;
+  border: 1px solid #e6e6e6;
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 24px;
+  height: 24px;
+  outline: 0;
+}
+
+.terms {
+  width: 219px;
+  height: 32px;
+  font-family: Geomanist400;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15.82px;
+  align-items: center;
+  margin: 0;
+}
+.registerFormButtonContainer {
+  width: 301px;
+}
+.alreadyAMember {
+  margin: 0px;
+  padding: 28px 0 34px 0;
+  font-size: 12px;
+  line-height: 131.8%;
+  text-decoration: underline;
+  color: #000000;
+  cursor: pointer;
+}

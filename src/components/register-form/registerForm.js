@@ -3,18 +3,20 @@ import { useDispatch } from 'react-redux';
 import Input from '../input';
 import Button from '../button';
 import { registerUserAction } from '../../actions/actions';
-import Preloader from '../preloader'
+import Preloader from '../preloader';
+import './registerForm.css';
 
 
 const RegisterForm = ({history}) =>{
-const [email, setEmail] = useState(null);
-const [password, setPassword] = useState(null);
-const [passwordVerify, setPasswordVerify] = useState(null);
-const [isEmailValid, setIsEmailValid] = useState(false);
-const [passwordsMatch, setPasswordsMatch] = useState(false);
-const [passwordLength, setPasswordLength] = useState(false);
-const [passwordRepeatLength, setPasswordRepeatLength] = useState(false);
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+const [passwordVerify, setPasswordVerify] = useState(false);
+const [isEmailValid, setIsEmailValid] = useState(true);
+const [passwordsMatch, setPasswordsMatch] = useState(true);
+const [passwordLength, setPasswordLength] = useState(true);
+const [passwordRepeatLength, setPasswordRepeatLength] = useState(true);
 const [isLoading, setIsLoading] = useState(false);
+const [termsChecked, setTermsChecked] = useState(false);
 
 const dispatch = useDispatch();
 
@@ -32,26 +34,37 @@ const validateForm= () => {
     const passwordMatchValidation = passwordLengthValid && passwordRepeatLengthValid && password === passwordVerify;
     setPasswordsMatch(passwordMatchValidation);
 
-    if (emailValidation && passwordMatchValidation) {
+    if (emailValidation && passwordMatchValidation && termsChecked) {
         setIsLoading(true);
         registerUserAction(email, password, passwordVerify, dispatch, history)
     }
 
 }
-
+    let passwordsMatchError = passwordRepeatLength?null:'Minimum of 5 characters required' ;
+    if (!passwordsMatch && passwordLength && passwordRepeatLength){
+        passwordsMatchError = 'Passwords don`t match'
+    }
 
    
 
     return(
-        <div>
+        <div className='registerFormContainer'>
             {!isLoading && (
-                <div>
-                    <h2>Join us now!</h2>
-                    <Input key='email' placeholdertext='E-mail' onInputChange={(event)=>{setEmail(event.target.value)}}/>
-                     <Input key='password' placeholdertext='Password' onInputChange={(event)=>{setPassword(event.target.value)}}/>
-                    <Input key='passwordRepeat' placeholdertext='Repeat Password' onInputChange={(event)=>{setPasswordVerify(event.target.value)}}/>
-                    <Button onButtonClick={()=>validateForm()} text='Create Account'/>
-                </div>)}
+                <div className='registerForm'>
+                    <h2 className='registerFormTitle'>Join us now!</h2>
+                    <Input key='email' placeholdertext='E-mail' errorMessage={isEmailValid ? null : 'Email format is incorrect'} onInputChange={(event)=>{setEmail(event.target.value)}}/>
+                    <Input key='password' type='password' errorMessage={passwordLength ? null : 'Minimum of 5 characters required'} placeholdertext='Password' onInputChange={(event)=>{setPassword(event.target.value)}}/>
+                    <Input key='passwordRepeat' type='password' errorMessage={passwordsMatchError} placeholdertext='Repeat Password' onInputChange={(event)=>{setPasswordVerify(event.target.value)}}/>
+                    <div className='termsContainer'>
+                        <input className='termsCheckbox' type="checkbox" onChange={()=>setTermsChecked(!termsChecked)} id="terms" name="terms" value="terms"></input>
+                        <label className='terms' htmlFor="terms">I agree to no <b>Terms and Conditions</b> <br></br>and <b>Privacy Policy</b>.</label><br></br>
+                    </div>
+                    <div className='registerFormButtonContainer'>
+                        <Button onButtonClick={()=>validateForm()} text='Create Account'/>
+                    </div>
+                    <p className='alreadyAMember' onClick={()=>history.push('./login')}>Already a member? Sign in</p>
+                 </div>
+            )}
             { isLoading && (
                 <Preloader/>
             )}      

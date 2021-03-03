@@ -1,0 +1,24 @@
+.inputContainer {
+  width: 285px;
+  height: 50px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+  font-family: Geomanist400;
+  font-size: 18px;
+  text-align: left;
+  background-color: #fafafa;
+  padding-inline-start: 16px;
+  writing-mode: horizontal-tb;
+  margin-bottom: 16px;
+}
+.inputWrapper {
+  position: relative;
+}
+.errorMessage {
+  position: absolute;
+  font-size: 12px;
+  display: block;
+  top: 53px;
+  left: 16px;
+  color: rgba(255, 0, 0, 0.74);
+}

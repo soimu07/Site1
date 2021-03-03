@@ -1,8 +1,12 @@
 import React from 'react';
+import './input.css'
 
-const Input = ( { placeholdertext, onInputChange } ) => {
+const Input = ( { placeholdertext, onInputChange, type, errorMessage } ) => {
     return ( 
-        <input placeholder={ placeholdertext } onChange={ onInputChange }></input>
+        <div className='inputWrapper'>
+        <input className='inputContainer' placeholder={ placeholdertext } onChange={ onInputChange } type={type || 'text'}></input>
+        {errorMessage && <span className='errorMessage'>{errorMessage}</span>}        
+        </div>
     )
 }
 

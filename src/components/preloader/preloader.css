@@ -1,0 +1,13 @@
+.preloaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0px 4px 88px rgba(135, 135, 135, 0.25);
+  border-radius: 32px;
+  width: 365px;
+  height: 458px;
+}
+.preloaderMessage {
+  margin: 0;
+}

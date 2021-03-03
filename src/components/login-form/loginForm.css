@@ -1,0 +1,31 @@
+.loginFormContainer {
+  position: relative;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 365px;
+  height: 458px;
+  background-color: #fff;
+  border-radius: 32px;
+  box-shadow: 0px 4px 88px rgba(135, 135, 135, 0.25);
+}
+.loginFormTitle {
+  margin: 0;
+  font-size: 32px;
+  padding: 54px 0 55px;
+}
+.logInButtonContainer {
+  margin-top: 39px;
+  width: 301px;
+}
+.notAMember {
+  margin: 0;
+  padding: 32px 0 0;
+  font-size: 12px;
+  line-height: 131.8%;
+  text-decoration: underline;
+  color: #000000;
+  cursor: pointer;
+}
