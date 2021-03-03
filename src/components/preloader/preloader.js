@@ -4,7 +4,7 @@ import './preloader.css';
 const Preloader = () => {
     return  (
         <div className='preloaderContainer'>
-            <p className='preloaderMessage' >Please wait</p>
+            <div className='spinner'></div>
         </div>
     )}
 

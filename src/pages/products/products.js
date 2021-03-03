@@ -4,14 +4,18 @@ import {getProductsAction} from '../../actions/actions'
 import './products.css'
 import Button from '../../components/button'
 import {logOutUserAction} from '../../actions/actions'
+import Preloader from '../../components/preloader';
 
 const Products = ({history}) => {
     const dispatch = useDispatch();
     const accessToken = useSelector(state => state.accessToken)
     const products = useSelector(state => state.products)
+    const limit = useSelector(state=> state.productsLimit)
+    const offset = useSelector(state=> state.productsOffset)
+    const productsTotal = useSelector(state=> state.productsTotal)
     useEffect(()=>{
-       getProductsAction(accessToken, dispatch, history);
-    },[accessToken, dispatch, history])
+       getProductsAction(accessToken, dispatch, history, limit, offset);
+    },[])
     if (!accessToken) {
         history.push("/")
     }
@@ -27,7 +31,7 @@ const Products = ({history}) => {
                     <div className='logOutButtonContainer'><Button onButtonClick={()=>logOut()}text='Log out'></Button></div>
                 </div>
             </header>
-            <div className='spinner'></div>
+            <Preloader/>
             <div className='productsContainer'>
             {(!products.length) && 'Loading'}        
             {products.map(product => (
@@ -41,7 +45,7 @@ const Products = ({history}) => {
                  
             </div>
             <div className='loadMoreButtonContainer'>
-            <Button text="Load more"></Button>
+            <Button text="Load more" onButtonClick={()=>{getProductsAction(accessToken, dispatch, history, limit, offset+limit)}} disabled={products.length===productsTotal}></Button>
             </div>    
         </div>
     )

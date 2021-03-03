@@ -78,24 +78,27 @@ export const loginUserAction = async (email, password, dispatch, history) => {
     
 }
 
-export const getProductsAction = async (accessToken, dispatch, history) => {
-    const {status, data} = await getProducts(accessToken);
+export const getProductsAction = async (accessToken, dispatch, history, limit, offset) => {
+    const {status, data} = await getProducts(accessToken, limit, offset);
     switch (status) {
         case 200:
             dispatch({
                 type:'GET_PRODUCTS_SUCCESS',
-                payload:{products:data.rows}
+                payload:{
+                    products:data.rows,
+                    productsTotal:data.count,
+                    productsOffset:offset
+                },
             })
             break;
         default: 
                 history.push('/error')
-
             break;
     }
 }
 
-const getProducts = async(accessToken) => {
-    const url = 'https://zipper-test-backend.herokuapp.com/products?limit=50&offset=0'
+const getProducts = async(accessToken, limit, offset) => {
+    const url = `https://zipper-test-backend.herokuapp.com/products?limit=${limit}&offset=${offset}`
     const response = await fetch(url, {
         headers: new Headers({
             'Authorization': `Bearer ${accessToken}`, 
