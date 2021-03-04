@@ -7,7 +7,7 @@ import Preloader from '../preloader'
 import './loginForm.css';
 
 const LoginForm = ( { history } ) => {
-    const [email, setEmail] = useState(null);
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isEmailValid, setIsEmailValid] = useState(true);
     const [isPasswordValid, setIsPasswordValid] = useState(true);
@@ -17,15 +17,15 @@ const LoginForm = ( { history } ) => {
 
     const validateForm = () => {
         const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        const emailValidation = emailRegex.test(String(email).toLowerCase());
+        const emailValidation = emailRegex.test(String(email.trim()).toLowerCase());
         setIsEmailValid(emailValidation);       
 
-        const passwordLength = password && password.length >= 5       
+        const passwordLength = password.trim() && password.trim().length >= 5       
         setIsPasswordValid(passwordLength);
 
         if ( emailValidation && passwordLength ) {
             setIsLoading(true);            
-            loginUserAction(email, password, dispatch, history)          
+            loginUserAction(email.trim(), password.trim(), dispatch, history)          
         }
         
     }
@@ -43,7 +43,9 @@ const LoginForm = ( { history } ) => {
                 </div> 
             )}  
             { isLoading && (
-               <Preloader />
+                <div className='formPreloaderContainer'>
+                    <Preloader/>
+                </div> 
             )}
             
         </div>

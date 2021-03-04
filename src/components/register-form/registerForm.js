@@ -25,10 +25,10 @@ const validateForm= () => {
     const emailValidation = emailRegex.test(String(email).toLowerCase());
     setIsEmailValid(emailValidation);   
    
-    const passwordLengthValid = password && password.length >= 5;
+    const passwordLengthValid = password.trim() && password.trim().length >= 5;
     setPasswordLength(passwordLengthValid);
    
-    const passwordRepeatLengthValid = passwordVerify && passwordVerify.length >= 5;
+    const passwordRepeatLengthValid = passwordVerify && passwordVerify.trim().length >= 5;
     setPasswordRepeatLength(passwordRepeatLengthValid)  
     
     const passwordMatchValidation = passwordLengthValid && passwordRepeatLengthValid && password === passwordVerify;
@@ -36,10 +36,10 @@ const validateForm= () => {
 
     if (emailValidation && passwordMatchValidation && termsChecked) {
         setIsLoading(true);
-        registerUserAction(email, password, passwordVerify, dispatch, history)
+        registerUserAction(email.trim(), password.trim(), passwordVerify, dispatch, history)
     }
-
 }
+
     let passwordsMatchError = passwordRepeatLength?null:'Minimum of 5 characters required' ;
     if (!passwordsMatch && passwordLength && passwordRepeatLength){
         passwordsMatchError = 'Passwords don`t match'

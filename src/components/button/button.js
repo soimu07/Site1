@@ -1,9 +1,9 @@
 import React from 'react';
 import './button.css';
 
-const Button = ({ text, onButtonClick, disabled }) => {
+const Button = ({ text, onButtonClick, disabled, backgroundColor}) => {
     return (
-        <button className='buttonContainer' onClick={ onButtonClick } disabled={disabled}>{text}</button>
+        <button className={`buttonContainer ${backgroundColor === 'grey' ? 'grey' : ''}`} onClick={ onButtonClick } disabled={disabled} >{text}</button>
     )
 }
 

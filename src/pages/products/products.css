@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 .productsHeaderContainer {
   height: 90px;
@@ -48,6 +49,12 @@
   100% {
     transform: rotate(360deg);
   }
+}
+.productsPreloadContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 }
 .productsContainer {
   padding-top: 100px;
